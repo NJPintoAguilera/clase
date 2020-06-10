@@ -97,18 +97,19 @@ public class PersonControllerTest {
 
     @Test
     void list() {
-        Flux<Person> list = Flux.just(
-                new Person("andres"),
-                new Person("camila")
+        var list = Flux.just(
+                new Person("Nelcy"),
+                new Person("Sebastian" )
         );
         when(repository.findAll()).thenReturn(list);
+
         webTestClient.get()
                 .uri("/person")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody()
-                .jsonPath("$[0].name").isEqualTo("andres")
-                .jsonPath("$[1].name").isEqualTo("camila");
+                .jsonPath("$[0].name").isEqualTo("Nelcy")
+                .jsonPath("$[1].name").isEqualTo("Sebastian");
 
         verify(personService).listAll();
         verify(repository).findAll();

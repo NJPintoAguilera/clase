@@ -15,8 +15,8 @@ public class PersonService {
 
     private final BiFunction<PersonRepository, Person, Mono<Person>> validInsert = (repository, person) -> repository.findByName(person.getName());
 
-    public Flux<Person> listAll(){
-        return Flux.empty();
+    public Flux<Person> listAll() {
+        return personRepository.findAll();
     }
 
     public Mono<Void> insert(Mono<Person> personMono) {

@@ -25,16 +25,16 @@ public class PersonController {
     }
 
     @PutMapping
-    public Mono<Void> put(@RequestBody Mono<Person> personMono) {
+    public Mono<Void> updatePerson(@RequestBody Mono<Person> personMono) {
         return Mono.empty();
     }
 
     @DeleteMapping("/{id}")
-    public Mono<Person> delPerson(@PathVariable("id") String id) {
+    public Mono<Person> deletePerson(@PathVariable("id") String id) {
         return Mono.empty();
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public Flux<Person> list() {
         return personService.listAll();
     }
